@@ -1,0 +1,16 @@
+{
+  "name": "injector",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node injector.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tape": "^4.6.2"
+  },
+  "devDependencies": {}
+}
