@@ -16,7 +16,7 @@ var inject = (cb) => {
 }
 
 
-/* --- TEST --- */
+/* --- TESTS --- */
 var tape =  require('tape')
 
 // start the server:
