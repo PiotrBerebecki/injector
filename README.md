@@ -26,3 +26,4 @@ tape('check route', t => {
 Stretch goals:
  - `inject(url, method, cb)` -> as in full url
  - `var inject = require('inject')(server)` -> 'register' the module with your server so that it knows where to listen, now we only need to pass it a path
+ - Deploy to npm for use in future projects
