@@ -2,29 +2,43 @@
 
 var http = require('http')
 
-var inject = (cb) => {
+var inject = (path, cb) => {
   http.get({
     hostname: 'localhost',
     port: 8080,
-    path: '/',
+    path: path,
     agent: false
   }, (res) => {
+    var str = ''
+
     res.on('data', data => {
-      cb({ payload: data.toString() })
+      str += data
+    })
+
+    res.on('end', () => {
+      cb({ payload: str })
     })
   })
 }
 
 
+
 /* --- TESTS --- */
-var tape =  require('tape')
+var tape = require('tape')
 
 // start the server:
 var server = require('./server.js')
 
-tape('check route', t => {
-  inject(response => {
+tape('check string route', t => {
+  inject('/string', response => {
     t.equal(response.payload, 'It Works!!',  'it does work')
+    t.end()
+  })
+})
+
+tape('check object route', t => {
+  inject('/object', response => {
+    t.deepEqual(JSON.parse(response.payload), { key: 'It Works' },  'it does work')
     t.end()
   })
 })
