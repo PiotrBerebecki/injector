@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node injector.js"
+    "start": "node index.js",
+    "test": "node tests/server.test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tape": "^4.6.2"
+    "hapi": "^16.1.1",
+    "tape": "^4.6.3"
   },
   "devDependencies": {}
 }
