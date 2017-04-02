@@ -1,13 +1,23 @@
 ## Testing your Hapi server - Build inject method
 
 #### What
-Build a tool called `inject`, which makes requests to your server.
+Build a tool called `inject`, which makes requests to your server. You might do this in a TDD way.
 
 #### Why
 We want to be able to test our server is routing and responding to requests appropriately.
 
 #### How
-You can use the node core modules to help. We will be using [Tape]('#') as our testing framework.
+You can use the node core modules to help. We will be using [Tape]('https://github.com/substack/tape') as our testing framework.
+
+- ```git clone``` this repo
+
+- ```npm install```
+
+- Run your server with ```npm start```
+
+- Execute your tests (in another tab) with ```npm test```
+
+_you might consider running your server within the test suite_
 
 #### Interface
 At its most basic level `inject` takes a callback which will be run once **all** the data has come back from the server.  That data can be accessed by `response.payload`
