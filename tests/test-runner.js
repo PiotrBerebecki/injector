@@ -1,6 +1,6 @@
 const stdin = process.openStdin()
 const grumpyCat = require('./grumpy-cat.js')
-// const colors = require('colors')
+const colors = require('colors')
 let data = ''
 
 stdin.on('data', (chunk) => {
@@ -25,10 +25,8 @@ stdin.on('end', () => {
     })
     console.log('ALL TESTS PASS - YOU\'VE EARNT GRUMP CAT')
   }
-  console.log('Number of Tests: ' + tests)
-  console.log('Passed: ' + pass)
-  console.log('Failed: ' + fail)
-  // console.log('Number of Tests: ' + tests.rainbow)
-  // console.log('Passed: ' + pass.rainbow)
-  // console.log('Failed: ' + fail.rainbow)
+
+  console.log('Number of Tests: ' + tests.yellow)
+  console.log('Passed: ' + pass.green)
+  console.log('Failed: ' + fail.red)
 })
