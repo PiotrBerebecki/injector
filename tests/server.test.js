@@ -14,7 +14,6 @@ const inject = require('./inject.js')
 //   })
 // })
 
-
 tape('check the home route', (t) => {
   inject('/', (res) => {
     t.equal(res.code, 200, 'Response status code correct')
@@ -44,11 +43,46 @@ tape('check the route', (t) => {
     headers: {'content-type': 'text'}
   }
   inject(options, (res) => {
-    t.equal(res.code, 400,  'checks handler checks for valid header')
+    t.equal(res.code, 400, 'checks handler checks for valid header')
     t.end()
   })
 })
 
-// tape('teardown', t => {
-//   server.close(t.end)
-// })
+// Hapi server.inject tests for comparison
+
+tape('check the route', (t) => {
+  var options = {
+    url: '/',
+    method: 'GET'
+  }
+  server.inject(options, (res) => {
+    t.equal(res.statusCode, 200, 'Response status code correct')
+    t.end()
+  })
+})
+
+tape('check the main handler', (t) => {
+  server.inject('/', (res) => {
+    t.equal(res.payload, 'success', 'handler is correct')
+    t.end()
+  })
+})
+
+tape('check the home handler', (t) => {
+  server.inject('/home', (res) => {
+    t.equal(res.payload, 'home', 'handler is correct')
+    t.end()
+  })
+})
+
+tape('check the route', (t) => {
+  var options = {
+    url: '/',
+    method: 'GET',
+    headers: {'content-type': 'text'}
+  }
+  server.inject(options, (res) => {
+    t.equal(res.statusCode, 400, 'checks handler checks for valid header')
+    t.end()
+  })
+})

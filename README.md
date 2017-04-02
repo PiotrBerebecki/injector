@@ -1,17 +1,18 @@
-## F&C morning challenge
+## Testing your Hapi server - Build inject method
 
-##### What
-Build a tool called `inject`, which makes requests to your server
+#### What
+Build a tool called `inject`, which makes requests to your server.
 
-##### Why
-We want to be able to test our server is responding to requests appropriately
+#### Why
+We want to be able to test our server is routing and responding to requests appropriately.
 
-##### How
-You can use the node core modules to help. We will be using Tape as our testing framework.
+#### How
+You can use the node core modules to help. We will be using [Tape]('#') as our testing framework.
 
-##### Interface
+#### Interface
 At its most basic level `inject` takes a callback which will be run once **all** the data has come back from the server.  That data can be accessed by `response.payload`
 
+Eg:
 ```js
 tape('check route', t => {
   inject(response => {
@@ -23,7 +24,21 @@ tape('check route', t => {
 })
 ```
 
-Stretch goals:
+#### Further Instructions
+
+Think about building upon your inject method so that it can take a url and method:
  - `inject(url, method, cb)` -> as in full url
- - `var inject = require('inject')(server)` -> 'register' the module with your server so that it knows where to listen, now we only need to pass it a path
+
+'Register' the module with your server so that it knows where to listen, now we only need to pass it a path
+
+ - `var inject = require('inject')(server)`
+
+_Play around and write more detailed tests for your handlers using other core node modules._
+
+###### Extras
+
  - Deploy to npm for use in future projects
+ - build a 'test runner' and pipe your tests through it using the script in your package.json:
+ ```
+"testRunner": "node tests/server.test.js | node tests/test-runner.js"
+```
