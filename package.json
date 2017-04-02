@@ -1,12 +1,11 @@
 {
   "name": "injector",
   "version": "1.0.0",
-  "description": "",
+  "description": "inject workshop",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "node tests/server.test.js",
-    "grumpycat": "node tests/server.test.js | node tests/test-runner.js"
   },
   "keywords": [],
   "author": "",
@@ -15,9 +14,5 @@
     "hapi": "^16.1.1",
     "inert": "^4.1.0",
     "tape": "^4.6.3"
-  },
-  "devDependencies": {
-    "colors": "^1.1.2",
-    "colour": "^0.7.1"
   }
 }
