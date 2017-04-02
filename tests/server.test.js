@@ -1,7 +1,8 @@
 const server = require('../src/server.js')
 const tape = require('tape')
 const inject = require('./inject.js')
-
+const fs = require('fs')
+const path = require('path')
 // tape('Is the server running?', (t) => {
 //   server.start(err => {
 //     if (err) {
@@ -38,7 +39,7 @@ tape('check object handler', t => {
 // inject can add headers to the request
 tape('check the route', (t) => {
   var options = {
-    url: '/',
+    url: '/object',
     method: 'GET',
     headers: {'content-type': 'text'}
   }
@@ -63,7 +64,8 @@ tape('check the route', (t) => {
 
 tape('check the main handler', (t) => {
   server.inject('/', (res) => {
-    t.equal(res.payload, 'success', 'handler is correct')
+    const file = fs.readFileSync(path.join(__dirname, '../public/index.html'))
+    t.equal(res.payload, (file.toString()), 'handler is correct')
     t.end()
   })
 })
@@ -77,7 +79,7 @@ tape('check the home handler', (t) => {
 
 tape('check the route', (t) => {
   var options = {
-    url: '/',
+    url: '/object',
     method: 'GET',
     headers: {'content-type': 'text'}
   }
