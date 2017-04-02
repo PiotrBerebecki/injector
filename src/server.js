@@ -7,6 +7,22 @@ server.connection({
   host: 'localhost'
 })
 
+// Inert for static files
+server.register(Inert, (err) => {
+  if (err) console.log(err)
+
+  server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+      directory: {
+        path: 'public'
+      }
+    }
+  })
+})
+
+// Other routes to be tested
 server.route([
   {
     method: 'GET',
@@ -35,18 +51,5 @@ server.route([
   }
 ])
 
-server.register(Inert, (err) => {
-  if (err) console.log(err)
-
-  server.route({
-    method: 'GET',
-    path: '/{param*}',
-    handler: {
-      directory: {
-        path: 'public'
-      }
-    }
-  })
-})
 
 module.exports = server
