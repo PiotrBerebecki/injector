@@ -11,7 +11,6 @@ tape('check string handler', t => {
 })
 
 // Passing tests using Hapi's server.inject for inspiration of what to work towards.
-
 tape('check the route', (t) => {
   var options = {
     url: '/',

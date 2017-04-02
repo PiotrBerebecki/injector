@@ -7,7 +7,7 @@ server.connection({
   host: 'localhost'
 })
 
-// Inert for static files
+// Inert for serving static files
 server.register(Inert, (err) => {
   if (err) console.log(err)
 
