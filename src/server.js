@@ -51,5 +51,4 @@ server.route([
   }
 ])
 
-
 module.exports = server
