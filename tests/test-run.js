@@ -1,5 +1,4 @@
 const grumpyCat = require('grumpy-cat')
-
 const stdin = process.openStdin()
 
 let data = ''
@@ -22,7 +21,6 @@ stdin.on('end', () => {
 
   if (tests === pass) {
     grumpyCat()
-    console.log('ALL TESTS PASS - YOU\'VE EARNT GRUMP CAT')
   }
 
   console.log('Number of Tests: ' + tests)

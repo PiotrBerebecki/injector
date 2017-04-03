@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "node tests/server.test.js | tests/test-run.js"
+    "test": "node tests/server.test.js",
+    "testRunner": "node tests/server.test.js | node tests/test-run.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,6 @@
     "tape": "^4.6.3"
   },
   "devDependencies": {
-    "grumpy-cat": "^1.0.1"
+    "grumpy-cat": "^1.1.0"
   }
 }
