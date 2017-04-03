@@ -1,29 +1,20 @@
 const grumpyCat = require('grumpy-cat')
-const stdin = process.openStdin()
 
-let data = ''
+// Here is your server.test.js output
+const testResultsStream = process.openStdin()
 
-stdin.on('data', (chunk) => {
-  chunk = chunk.toString()
-  data += chunk
-})
+// This is a hint...
+let testResults = ''
 
-stdin.on('end', () => {
-  var regEx = {
-    tests: /#\stests\s+(\d+)/,
-    pass: /#\spass\s+(\d+)/,
-    fail: /#\sfail\s+(\d+)/
-  }
+/** write your test runner here **/
 
-  var tests = regEx['tests'].exec(data) ? regEx['tests'].exec(data)[1] : '0'
-  var pass = regEx['pass'].exec(data) ? regEx['pass'].exec(data)[1] : '0'
-  var fail = regEx['fail'].exec(data) ? (regEx['fail'].exec(data))[1] : '0'
 
-  if (tests === pass) {
-    grumpyCat()
-  }
+// If all tests pass, grumpy cat makes an appearance
+if (tests === passed) {
+  grumpyCat()
+}
 
-  console.log('Number of Tests: ' + tests)
-  console.log('Passed: ' + pass)
-  console.log('Failed: ' + fail)
-})
+// Logging your results to the terminal
+console.log('Number of Tests: ' + tests)
+console.log('Passed: ' + pass)
+console.log('Failed: ' + fail)
