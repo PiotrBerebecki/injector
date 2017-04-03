@@ -14,7 +14,6 @@ tape('check string handler', t => {
 
 
 /**** Passing tests using Hapi's server.inject for inspiration
-
 tape('check the route', (t) => {
   var options = {
     url: '/',
@@ -25,7 +24,6 @@ tape('check the route', (t) => {
     t.end()
   })
 })
-
 tape('check the route', (t) => {
   var options = {
     url: '/object',
@@ -37,12 +35,10 @@ tape('check the route', (t) => {
     t.end()
   })
 })
-
 tape('check the home handler', (t) => {
   server.inject('/home', (res) => {
     t.equal(res.payload, 'home', 'handler is correct')
     t.end()
   })
 })
-
 ****/

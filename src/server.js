@@ -38,7 +38,7 @@ server.route([
       if (req.headers['content-type'] === 'text') {
         res().code(400)
       } else {
-        res({key: 'It works'})
+        res({key: 'object'})
       }
     }
   },

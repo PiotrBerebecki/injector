@@ -50,7 +50,5 @@ _Play around and write more detailed tests for the routes & handlers_
 ##### Extras
 
  - Deploy to npm for use in future projects.
- - Build a 'test runner' and pipe your tests through it using the script in your package.json:
- ```
-"testRunner": "node tests/server.test.js | node tests/test-runner.js"
-```
+ - Have a play with the [hapi server.inject](https://hapijs.com/api#serverinjectoptions-callback) method to see what it's capable of.
+ - Build a 'test runner', you'll see a partly filled file test-runner.js. Run your tests through your test runner with ```npm run testRunner```
