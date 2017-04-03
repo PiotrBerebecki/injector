@@ -1,16 +1,16 @@
 ## Testing your Hapi server - Build inject method
 
-#### What
+### What
 Build a tool called `inject`, which makes requests to your server.
 
-#### Why
+### Why
 We want to be able to test our server is routing and responding to requests appropriately. Hapi.js has its own inject method, which is called upon the server (it uses the shot module behind the scenes). You'll be creating something similar.
 
-#### How
+### How
 
-> In server.js you'll see a hapi server with some basic routes.
+In server.js you'll see a hapi server with some basic routes.
 
-> In server.test.js there are some passing tests using hapi's server.inject. These are for inspiration and should indirectly inform you on what your inject module should do.
+In server.test.js there are some passing tests using hapi's server.inject. These are for inspiration and should indirectly inform you on what your inject module should do.
 
 You can use the node core modules to help. We will be using [Tape]('https://github.com/substack/tape') as our testing framework.
 
@@ -23,7 +23,7 @@ You can use the node core modules to help. We will be using [Tape]('https://gith
 - Execute your tests (in another tab) with ```npm test```
 
 
-#### Interface
+### Interface
 At its most _basic level_ `inject` takes a callback which will be run once **all** the data has come back from the server.  That data can be accessed by `response.payload`
 
 Eg:
@@ -36,7 +36,7 @@ tape('check route', t => {
 })
 ```
 
-#### Further Instructions
+### Further Instructions
 
 Think about building upon your inject method so that it can take a url and method:
  - `inject(options, cb)` -> as in full url
@@ -47,7 +47,7 @@ Think about building upon your inject method so that it can take a url and metho
 
 _Play around and write more detailed tests for the routes & handlers_
 
-##### Extras
+#### Extras
 
  - Deploy to npm for use in future projects.
  - Have a play with the [hapi server.inject](https://hapijs.com/api#serverinjectoptions-callback) method to see what it's capable of.
