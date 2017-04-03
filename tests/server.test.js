@@ -2,15 +2,19 @@ const server = require('../src/server.js')
 const tape = require('tape')
 const inject = require('./inject.js')
 
-// Example test - (failing)
+// Example test for '/string' endpoint - (failing)
 tape('check string handler', t => {
   inject(response => {
-    t.equal(response.payload, 'It works', 'it does work')
+    t.equal(response.payload, 'Returns a string', '/string handler works!')
     t.end()
   })
 })
 
-// Passing tests using Hapi's server.inject for inspiration of what to work towards.
+// Write your tests here
+
+
+/**** Passing tests using Hapi's server.inject for inspiration
+
 tape('check the route', (t) => {
   var options = {
     url: '/',
@@ -40,3 +44,5 @@ tape('check the home handler', (t) => {
     t.end()
   })
 })
+
+****/

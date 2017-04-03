@@ -7,7 +7,7 @@ server.connection({
   host: 'localhost'
 })
 
-// Inert for serving static files
+// Route for serving static files (index.html)
 server.register(Inert, (err) => {
   if (err) console.log(err)
 
@@ -28,7 +28,7 @@ server.route([
     method: 'GET',
     path: '/string',
     handler: (req, res) => {
-      res('It works')
+      res('Returns a string')
     }
   },
   {
