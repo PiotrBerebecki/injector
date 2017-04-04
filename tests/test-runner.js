@@ -1,20 +1,29 @@
-const grumpyCat = require('grumpy-cat')
+const grumpyCat = require('grumpy-cat');
 
 // Here is your server.test.js output
-const testResultsStream = process.openStdin()
+const testResultsStream = process.openStdin();
 
 // This is a hint...
-let testResults = ''
+let testResults = '';
 
-/** write your test runner here **/
+testResultsStream.on('data', (chunk) => {
+  chunk = chunk.toString();
+  testResults += chunk;
+});
 
+testResultsStream.on('end', () => {
 
-// If all tests pass, grumpy cat makes an appearance
-if (tests === passed) {
-  grumpyCat();
-}
+  var testNum = (testResults.match(/tests\s+(\d+)/) || [])[1] || '0';
+  var passNum = (testResults.match(/pass\s+(\d+)/) || [])[1] || '0';
+  var failNum = (testResults.match(/fail\s+(\d+)/) || [])[1] || '0';
 
-// Logging your results to the terminal
-console.log('Number of Tests: ' + tests);
-console.log('Passed: ' + pass);
-console.log('Failed: ' + fail);
+  // If all tests pass, grumpy cat makes an appearance
+  if (testNum === passNum) {
+    grumpyCat();
+  }
+
+  // Logging your results to the terminal
+  console.log('Number of Tests: ' + testNum);
+  console.log('Passed: ' + passNum);
+  console.log('Failed: ' + failNum);
+});
