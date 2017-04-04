@@ -1,10 +1,11 @@
 const http = require('http');
 
-const inject = (cb) => {
-  // Code...
-  // what core node modules might you need here?
-  http.get('http://localhost:4000/string', res => {
-
+const inject = (options, cb) => {
+  http.get({
+    hostname: options.hostname || 'localhost',
+    port: options.port || 4000,
+    path: options.path || '/',
+  }, res => {
     let data = '';
 
     res.on('data', (chunk) => {
@@ -12,8 +13,8 @@ const inject = (cb) => {
     });
 
     res.on('end', () => {
-
-      cb({payload: data});
+      res.payload = data;
+      cb(res);
     });
 
   });

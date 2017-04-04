@@ -4,7 +4,13 @@ const inject = require('./inject.js');
 
 // Example test for '/string' endpoint - (failing)
 tape('check string handler', t => {
-  inject(response => {
+  const options = {
+    path: '/string',
+    method: 'GET',
+    host: 'localhost',
+    port: '4000',
+  };
+  inject(options, response => {
     t.equal(response.payload, 'Returns a string', '/string handler works!');
     t.end();
   });
@@ -13,20 +19,21 @@ tape('check string handler', t => {
 // Write your tests here
 
 
+tape('check the route', (t) => {
+  var options = {
+    path: '/',
+    method: 'GET'
+  }
+  inject(options, (res) => {
+    t.equal(res.statusCode, 200, 'Response status code correct');
+    t.end();
+  });
+});
+
 /**** Passing tests using Hapi's server.inject for inspiration
 tape('check the route', (t) => {
   var options = {
-    url: '/',
-    method: 'GET'
-  }
-  server.inject(options, (res) => {
-    t.equal(res.statusCode, 200, 'Response status code correct')
-    t.end()
-  })
-})
-tape('check the route', (t) => {
-  var options = {
-    url: '/object',
+    path: '/object',
     method: 'GET',
     headers: {'content-type': 'text'}
   }
