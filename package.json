@@ -4,8 +4,8 @@
   "description": "inject workshop",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node tests/server.test.js",
+    "start": "nodemon index.js",
+    "test": "node tests/server.test.js | tap-spec",
     "testRunner": "node tests/server.test.js | node tests/test-runner.js"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "tape": "^4.6.3"
   },
   "devDependencies": {
-    "grumpy-cat": "^1.1.0"
+    "grumpy-cat": "^1.1.0",
+    "tap-spec": "^4.1.1"
   }
 }

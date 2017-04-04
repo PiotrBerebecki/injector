@@ -11,10 +11,10 @@ let testResults = ''
 
 // If all tests pass, grumpy cat makes an appearance
 if (tests === passed) {
-  grumpyCat()
+  grumpyCat();
 }
 
 // Logging your results to the terminal
-console.log('Number of Tests: ' + tests)
-console.log('Passed: ' + pass)
-console.log('Failed: ' + fail)
+console.log('Number of Tests: ' + tests);
+console.log('Passed: ' + pass);
+console.log('Failed: ' + fail);
