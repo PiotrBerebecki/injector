@@ -30,22 +30,23 @@ tape('check the route', (t) => {
   });
 });
 
-/**** Passing tests using Hapi's server.inject for inspiration
+
 tape('check the route', (t) => {
   var options = {
     path: '/object',
     method: 'GET',
     headers: {'content-type': 'text'}
-  }
-  server.inject(options, (res) => {
-    t.equal(res.statusCode, 400, 'checks handler checks for valid header')
-    t.end()
-  })
-})
+  };
+  inject(options, (res) => {
+    t.equal(res.statusCode, 400, 'checks handler checks for valid header');
+    t.end();
+  });
+});
+
+
 tape('check the home handler', (t) => {
-  server.inject('/home', (res) => {
-    t.equal(res.payload, 'home', 'handler is correct')
-    t.end()
-  })
-})
-****/
+  inject('/home', (res) => {
+    t.equal(res.payload, 'home', 'handler is correct');
+    t.end();
+  });
+});
