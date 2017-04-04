@@ -1,30 +1,34 @@
 const http = require('http');
+const url = require('url');
 
-const inject = (options, cb) => {
-  const endpoint = typeof options === 'string' ?
-   `http://localhost:4000${options}` :
-  {
-    hostname: options.hostname || 'localhost',
-    port: options.port || 4000,
-    path: options.path || '/',
-    headers: options.headers
-  };
+module.exports = server => (options, cb) => {
+  server.start(err => {
+    if (err) console.log(err);
 
-  http.get(endpoint, res => {
-    let data = '';
+    const urlParts = url.parse(server.info.uri);
 
-    res.on('data', (chunk) => {
-      data += chunk;
+    const endpoint = typeof options === 'string' ?
+    `${server.info.uri}${options}` :
+    {
+      hostname: urlParts.hostname || 'localhost',
+      port: urlParts.port || 4000,
+      path: options.path || '/',
+      headers: options.headers,
+    };
+
+    http.get(endpoint, res => {
+      let data = '';
+
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      res.on('end', () => {
+        res.payload = data;
+        server.stop(() => {
+          cb(res);
+        });
+      });
     });
-
-    res.on('end', () => {
-      res.payload = data;
-      cb(res);
-    });
-
   });
-
-
 };
-
-module.exports = inject;

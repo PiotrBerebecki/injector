@@ -1,29 +1,23 @@
 const server = require('../src/server.js');
 const tape = require('tape');
-const inject = require('./inject.js');
+const inject = require('./inject.js')(server);
 
 // Example test for '/string' endpoint - (failing)
 tape('check string handler', t => {
   const options = {
     path: '/string',
     method: 'GET',
-    host: 'localhost',
-    port: '4000',
   };
   inject(options, response => {
     t.equal(response.payload, 'Returns a string', '/string handler works!');
     t.end();
   });
 });
-
-// Write your tests here
-
-
 tape('check the route', (t) => {
   var options = {
     path: '/',
     method: 'GET'
-  }
+  };
   inject(options, (res) => {
     t.equal(res.statusCode, 200, 'Response status code correct');
     t.end();
